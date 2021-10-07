@@ -22,8 +22,10 @@ def load_art(filename):
 
 
 '''
-FUNCTION load_data(filename):
-
+FUNCTION load_data(filename) imports a file and reads the lines.
+Each line is then spliced at the comma to create a list.
+Each list represents one item and every index is sorted into a dictionary for the item.
+Finally, each item dictionary is appended into the master inventory list. 
 '''
 
 def load_data(filename):
@@ -86,13 +88,9 @@ def display_product(product_index):
     print ("")
 
 '''
-FUNCTION search(product_search):
-
-    FOR items in grocery_inventory:
-        IF product_search IN item:
-            display_product (product_name)
+function SEARCH allows the user to search for a product (case insensitive), 
+get a list of the inventory, and returns a message if the product is not in stock.
 '''
-
 
 def search():
     
@@ -104,6 +102,8 @@ def search():
         for d in grocery_inventory:
             print (d['name'])
         valid_search = True
+        print("")
+        search()
 
     #otherwise, look to see if their input matches any groceries
     for d in grocery_inventory:
@@ -119,11 +119,12 @@ def search():
         print("It looks like we don't have any items that match your search.")
         print("Try again.")
         print("")
-        
+
+    #call search again function    
     search_again()
 
 '''
-Create a function asking user if they want to search again
+function SEARCH AGAIN allows the user to decide if they want to search for another product or not
 '''
 
 def search_again():
