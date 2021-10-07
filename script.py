@@ -107,7 +107,7 @@ def search():
 
     #otherwise, look to see if their input matches any groceries
     for d in grocery_inventory:
-        if user_input in d['name']:
+        if user_input.title() in d['name']:
             #print (d['name'])
             display_product(d)
             valid_search = True
@@ -131,7 +131,14 @@ def search_again():
     user_input = input("yes/no --> ")
 
     if user_input.lower() == "yes":
+        print("")
         search()
+
+    elif user_input.lower() != "no":
+        print("")
+        print("Input not recognized.")
+        search_again()
+
 
 
 '''
