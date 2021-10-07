@@ -5,18 +5,10 @@ SET products = file products.txt
 '''
 grocery_inventory = []
 products = "products.txt"
+
 '''
 FUNCTION load_data(filename):
-    IMPORT data.txt file
-    READ data.txt file
-    STORE lines as variable
-    SPLIT lines at comma to create list
-    LOOP through each list
-    CREATE a dictionary with each list item
-        SET product_name = dictionary_name
-        SET keys = brand, cost, qty
-        SET brand, cost, qty = pairs
-    APPEND dictionary to list grocery_inventory
+
 '''
 
 def load_data(filename):
@@ -25,6 +17,7 @@ def load_data(filename):
     for line in lines:
         #print ("========================")
         #print(line)
+        line = line.replace("\n", "")
         value = line.split(',') #split each line at the comma into a list
         #print (value)
         #print ("========================")
@@ -52,8 +45,6 @@ def load_data(filename):
     file.close()
     return grocery_inventory
 
-load_data(products)
-print(grocery_inventory)
 
 '''
 FUNCTION display_product(product_name):
@@ -61,14 +52,17 @@ FUNCTION display_product(product_name):
     DISPLAY brand
     DISPLAY cost
     DISPLAY qty
+    
 '''
 
 def display_product(product_index):
-    for product_index in grocery_inventory:
-        print (product_index['name'])
-        print (product_index['cost'])
-        print (product_index['qty'])
-    pass
+    #print ("DISPLAY FUNCTION")
+    print ("")
+    print (product_index['name'])
+    print ("")
+    print (f"This item costs ${product_index['cost']}")
+    print (f"We have {product_index['qty']} in stock.")
+    print ("")
 
 '''
 FUNCTION search(product_search):
@@ -82,31 +76,34 @@ FUNCTION search(product_search):
 
 def search():
     
-    user_input = input("Search for a product:")
+    user_input = input("Search for a product:  ")
 
     for d in grocery_inventory:
         if user_input in d['name']:
-            print (d['name'])
+            #print (d['name'])
+            #continue
             display_product(d)
+            continue
 
-        elif user_input not in grocery_inventory:
-            print ("")
-            print("It looks like we don't have any items that match your search.")
-            print("Try again.")
-            print("")
-            search()
+        #elif user_input not in grocery_inventory:
+        #    print ("")
+        #    print("It looks like we don't have any items that match your search.")
+        #    print("Try again.")
+        #    print("")
+        #    search()
 
 
+'''
+Open the grocery store!
+'''
+
+load_data(products)
+#print(grocery_inventory)
+
+print ("")
+print ("Welcome to Internet Produce!")
+print ("Your not so specialist grocer.")
+print ("")
+print ("Get started by searching for a product below.")
 search()
 
-
-'''
-NOTE dictionary format:
-
-    product_name = {
-        'brand': brand,
-        'cost': cost,
-        'qty': qty
-    }
-
-'''
