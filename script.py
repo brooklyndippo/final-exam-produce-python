@@ -120,7 +120,18 @@ def search():
         print("Try again.")
         print("")
         
-    search()
+    search_again()
+
+'''
+Create a function asking user if they want to search again
+'''
+
+def search_again():
+    print("Would you like to search for another product?")
+    user_input = input("yes/no --> ")
+
+    if user_input.lower() == "yes":
+        search()
 
 
 '''
