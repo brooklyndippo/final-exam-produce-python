@@ -1,0 +1,96 @@
+# Product Search
+
+Your goal is to write a program that loads the product data and searches the data for a product. 
+
+You should load product.txt. This file is arranged in rows of data. Each row looks like this: 
+
+```
+988,Strawberries,2.46,60
+```
+If you split this row on the `,` (comma) you will get a list that looks like this: 
+
+```
+"988,Strawberries,2.46,60".split(',') # ['988', 'Strawberries', '2.46', '60\n']
+```
+
+Your program should do the following: 
+
+- Prompt for a search string
+- Look at each item in the list and see if the search string is _in_ the product name. 
+- If it finds the item it should print the name followed by the price, the number of units, and the total cost (units * price)
+
+For example: 
+
+```
+Search: Strawberries # PROMPT
+Name: Strawberries price: 2.46 count: 60.0 total: 147.6 # DISPLAY
+```
+
+This displays total as `147.6` because the number of units 60 times the price of 2.46 per unit is 147.6.
+
+or 
+
+```
+Search: Tea # PROMPT
+Name: Snapple Raspberry Tea price: 2.41 count: 6.0 total: 14.46 # DISPLAY
+```
+
+Here we found "Snapple Raspberry Tea" because "Tea" is in the name!
+
+If an item is not found your program should print a message saying: item not found. For example: 
+
+```
+Search: loaf # PROMPT
+Item not found # DISPLAY
+```
+
+## Requirements 
+
+You should write a program that solves the problem presented above. 
+
+Your solution should use at least three functions to solve the problem. At least one of the functions should take one or more parameters and return a value. Here are some suggestions: 
+
+- `load_data(path)` - this function takes the path to products.txt and returns an array of products. 
+- `display_product(name, price, units)` - this function takes the name, price, and units of a product and returns a formatted string. 
+- `search(str)` - takes a string, might return a formatted string.
+
+'''
+REQUIREMENTS:
+
+INITIALIZE empty list grocery_inventory
+SET products = file products.txt
+
+
+FUNCTION load_data(filename):
+    IMPORT data.txt file
+    READ data.txt file
+    STORE lines as variable
+    SPLIT lines at comma to create list
+    LOOP through each list
+    CREATE a dictionary with each list item
+        SET product_name = dictionary_name
+        SET keys = brand, cost, qty
+        SET brand, cost, qty = pairs
+    APPEND dictionary to list grocery_inventory
+
+
+FUNCTION display_product(product_name):
+    DISPLAY product_name
+    DISPLAY brand
+    DISPLAY cost
+    DISPLAY qty
+
+
+FUNCTION search(product_search):
+    FOR items in grocery_inventory:
+        IF product_search IN item:
+            display_product (product_name)
+
+
+NOTE dictionary format:
+
+    product_name = {
+        'brand': brand,
+        'cost': cost,
+        'qty': qty
+    }
