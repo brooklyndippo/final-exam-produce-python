@@ -63,13 +63,44 @@ FUNCTION display_product(product_name):
     DISPLAY qty
 '''
 
+def display_product(product_index):
+    for product_index in grocery_inventory:
+        print (product_index['name'])
+        print (product_index['cost'])
+        print (product_index['qty'])
+    pass
+
 '''
 FUNCTION search(product_search):
+
     FOR items in grocery_inventory:
         IF product_search IN item:
             display_product (product_name)
+'''
 
 
+
+def search():
+    
+    user_input = input("Search for a product:")
+
+    for d in grocery_inventory:
+        if user_input in d['name']:
+            print (d['name'])
+            display_product(d)
+
+        elif user_input not in grocery_inventory:
+            print ("")
+            print("It looks like we don't have any items that match your search.")
+            print("Try again.")
+            print("")
+            search()
+
+
+search()
+
+
+'''
 NOTE dictionary format:
 
     product_name = {
