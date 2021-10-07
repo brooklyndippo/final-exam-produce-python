@@ -19,4 +19,4 @@
 19,Creme De Banane - Marie,0.41,7
 20,Fenngreek Seed,0.22,22
 21,Strawberries,2.46,60
-22,Snapple Raspberry Tea,2.41,6.0
+22,Snapple Raspberry Tea,2.41,6

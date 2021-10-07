@@ -5,6 +5,21 @@ SET products = file products.txt
 '''
 grocery_inventory = []
 products = "products.txt"
+art = "grocery_art.txt"
+
+
+'''
+Fucntion LOAD ART loads the ascii art file.
+It removes the line break at the end of each line and prints each line to show the art.
+'''
+
+def load_art(filename):
+    file = open(filename, "r")
+    lines = file.readlines()
+    for line in lines:
+        art_line = line.replace("\n", "")
+        print (art_line)
+
 
 '''
 FUNCTION load_data(filename):
@@ -57,11 +72,17 @@ FUNCTION display_product(product_name):
 
 def display_product(product_index):
     #print ("DISPLAY FUNCTION")
+    name = product_index['name']
+    cost = product_index['cost']
+    qty = product_index['qty']
+    total = round((float(cost) * int(qty)), 2)
     print ("")
-    print (product_index['name'])
+    print (name)
     print ("")
-    print (f"This item costs ${product_index['cost']}")
-    print (f"We have {product_index['qty']} in stock.")
+    print (f"This item costs ${cost}")
+    print (f"We have {qty} in stock.")
+    print ("")
+    print (f"You can buy our entire inventory of {name} for a bargain price of ${total}!")
     print ("")
 
 '''
@@ -73,24 +94,33 @@ FUNCTION search(product_search):
 '''
 
 
-
 def search():
     
     user_input = input("Search for a product:  ")
+    valid_search = False
 
+    #if they input inventory, show a list of all items in stock
+    if user_input.lower() == "inventory":
+        for d in grocery_inventory:
+            print (d['name'])
+        valid_search = True
+
+    #otherwise, look to see if their input matches any groceries
     for d in grocery_inventory:
         if user_input in d['name']:
             #print (d['name'])
-            #continue
             display_product(d)
+            valid_search = True
             continue
 
-        #elif user_input not in grocery_inventory:
-        #    print ("")
-        #    print("It looks like we don't have any items that match your search.")
-        #    print("Try again.")
-        #    print("")
-        #    search()
+    #if there are no items that match, print the following
+    if valid_search == False:
+        print ("")
+        print("It looks like we don't have any items that match your search.")
+        print("Try again.")
+        print("")
+        
+    search()
 
 
 '''
@@ -101,9 +131,14 @@ load_data(products)
 #print(grocery_inventory)
 
 print ("")
+load_art(art)
+print ("")
+print ("")
 print ("Welcome to Internet Produce!")
 print ("Your not so specialist grocer.")
 print ("")
-print ("Get started by searching for a product below.")
+print ("Get started by searching for a product below or type")
+print ("'inventory' at any time to see what's available")
+print ("")
 search()
 
