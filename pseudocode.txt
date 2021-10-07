@@ -76,7 +76,6 @@ FUNCTION load_data(filename):
 
 FUNCTION display_product(product_name):
     DISPLAY product_name
-    DISPLAY brand
     DISPLAY cost
     DISPLAY qty
 
@@ -90,7 +89,6 @@ FUNCTION search(product_search):
 NOTE dictionary format:
 
     product_name = {
-        'brand': brand,
         'cost': cost,
         'qty': qty
     }
